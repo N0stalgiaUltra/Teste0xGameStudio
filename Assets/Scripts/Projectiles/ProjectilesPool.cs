@@ -34,20 +34,16 @@ public class ProjectilesPool : MonoBehaviour
     {
         if (projectileQueue.Count != 0)
         {
-            if (isPlayer)
-            {
-                Projectile aux = projectileQueue.Dequeue();
-                aux.gameObject.GetComponent<Projectile>().projectileSpawn = bulletSpawn;
-                aux.gameObject.layer = LayerMask.NameToLayer(PlayerLayer);
 
-                aux.gameObject.SetActive(true);
-                return aux;
-            }
-            else //fazer pra inimigo
-            {
-                Projectile aux = projectileQueue.Dequeue();
-                return aux;
-            }
+            Projectile aux = projectileQueue.Dequeue();
+            if (isPlayer)
+                aux.gameObject.layer = LayerMask.NameToLayer(PlayerLayer);
+            else
+                aux.gameObject.layer = LayerMask.NameToLayer(EnemyLayer);
+
+            aux.gameObject.GetComponent<Projectile>().projectileSpawn = bulletSpawn;
+            aux.gameObject.SetActive(true);
+            return aux;
         }
         else
         {
