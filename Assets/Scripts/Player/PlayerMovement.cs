@@ -34,14 +34,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(movX * speed, movY * speed);
 
-        if (movX > 0)
-            Rotate(true);
-        else if (movX < 0)
-            Rotate(false);
+
     }
-    private void Rotate(bool turn)
+    private void Rotate(bool faceRight)
     {
-        if(turn)
+        if(faceRight)
             transform.rotation = Quaternion.Euler(Vector3.zero);
         else
         {
