@@ -5,16 +5,19 @@ using UnityEngine;
 public class ProjectilesCollider : MonoBehaviour
 {
     [SerializeField] private ProjectilesData data;
-    void GetHit()
-    {
 
+    void GetHit(HealthController objHealth)
+    {
+        objHealth.Damage(data.damage);
+        ProjectilesPool.instance.ReplenishQueue(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Enemy"))
-            GetHit();
-
-        //adicionar do player tb
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Player"))
+        {
+            HealthController aux = collision.gameObject.GetComponent<HealthController>();
+            GetHit(aux);
+        }
     }
 }

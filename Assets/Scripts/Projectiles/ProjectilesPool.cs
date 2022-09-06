@@ -43,7 +43,7 @@ public class ProjectilesPool : MonoBehaviour
                 aux.gameObject.SetActive(true);
                 return aux;
             }
-            else
+            else //fazer pra inimigo
             {
                 Projectile aux = projectileQueue.Dequeue();
                 return aux;
