@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyShoot : MonoBehaviour
 {
-    //inimigo anda em direção ao player e para para atirar no player, apos atirar, anda dnv
-    //bullet spawn deve estar olhando para o player
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] private float fireRate;
     float nextFire;

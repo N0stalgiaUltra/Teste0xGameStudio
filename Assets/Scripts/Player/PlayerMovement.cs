@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header ("Player Movement Variables")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator anim;
     [SerializeField] private float speed;
 
     [Header("Bengal Variables")]
@@ -33,18 +34,19 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         rb.velocity = new Vector2(movX * speed, movY * speed);
-
-
+        if (Mathf.Abs(movX) > Mathf.Epsilon || Mathf.Abs(movY) > Mathf.Epsilon)
+            anim.SetInteger("Move", 1);
+        else
+            anim.SetInteger("Move", 0);
     }
     private void Rotate(bool faceRight)
     {
-        if(faceRight)
+        if (faceRight)
             transform.rotation = Quaternion.Euler(Vector3.zero);
         else
-        {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-               
-        }
+
+
     }
 
     private void RotateBengal()
