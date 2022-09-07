@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
+    public enum CharType
+    {
+        Player,
+        Enemy
+    }
+
+    public CharType charType;
     [SerializeField] private CharData data;
     [SerializeField] private int health;
 
@@ -15,11 +22,21 @@ public class HealthController : MonoBehaviour
     private void Update()
     {
         if (health <= data.MinHealth)
-            this.gameObject.SetActive(false);
+            Die();
     }
     public void Damage(int damage)
     {
         if (health > data.MinHealth)
             health -= damage;
+    }
+    
+    public void Die()
+    {
+        if(this.charType == CharType.Enemy)
+        {
+            EnemyPool.instance.DeactivateEnemy(this.gameObject);
+        }
+        this.gameObject.SetActive(false);
+
     }
 }

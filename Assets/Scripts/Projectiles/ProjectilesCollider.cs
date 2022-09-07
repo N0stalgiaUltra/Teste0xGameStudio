@@ -20,4 +20,9 @@ public class ProjectilesCollider : MonoBehaviour
             GetHit(aux);
         }
     }
+
+    private void OnBecameInvisible()
+    {
+        ProjectilesPool.instance.ReplenishQueue(this.gameObject);
+    }
 }
