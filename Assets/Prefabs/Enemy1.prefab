@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 303248661042500250}
-  fireRate: 1.5
+  fireRate: 3
 --- !u!95 &303248659642827462
 Animator:
   serializedVersion: 3

@@ -7,7 +7,7 @@ public class ProjectilesPool : MonoBehaviour
     [SerializeField] private Projectile projectilePrefab;
 
     [SerializeField] private Queue<Projectile> projectileQueue = new Queue<Projectile>(50);
-    int capacity = 50;
+    [SerializeField] int capacity = 50;
 
     public static ProjectilesPool instance;
 
